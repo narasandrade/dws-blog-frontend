@@ -5,13 +5,13 @@ header .search-container {
   background: $neutral-lightest;
   border: 2px solid $neutral-extra-light;
   border-radius: 30px;
-  padding: 5px;
+  padding: 8px 8px 8px 16px;
   margin-right: 50px;
 
   input {
     width: 400px;
     background: $neutral-lightest;
     border: none;
-    margin-left: 5px;
+    font-size: medium;
   }
 }
