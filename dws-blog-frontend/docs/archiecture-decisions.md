@@ -1,0 +1,4 @@
+- Vite chosen for fast dev environment
+- Component-driven architecture
+- Create base components to avoid repeating code and customize on top of them when needed
+- Services layer to isolate API logic
