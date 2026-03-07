@@ -1,0 +1,17 @@
+@use "../../styles/colors" as *;
+
+header .search-container {
+  display: flex;
+  background: $neutral-lightest;
+  border: 2px solid $neutral-extra-light;
+  border-radius: 30px;
+  padding: 5px;
+  margin-right: 50px;
+
+  input {
+    width: 400px;
+    background: $neutral-lightest;
+    border: none;
+    margin-left: 5px;
+  }
+}
