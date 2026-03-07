@@ -1,6 +1,6 @@
 @use "../../styles/colors" as *;
 
-button {
+header .search-button {
   height: 40px;
   width: 40px;
   background-color: $primary-dark;
@@ -18,7 +18,7 @@ button {
 }
 
 @media (max-width: 767px) {
-  button {
+  header .search-button {
     margin-right: 20px;
   }
 }
