@@ -1,0 +1,16 @@
+@use "../../styles/colors" as *;
+
+button {
+  cursor: pointer;
+}
+
+.sort-container {
+  display: flex;
+  align-items: center;
+
+  > span {
+    color: $neutral-extra-dark;
+    font-size: smaller;
+    font-weight: bold;
+  }
+}
