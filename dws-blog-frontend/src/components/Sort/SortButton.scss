@@ -1,0 +1,38 @@
+@use "../../styles/colors" as *;
+
+.sort-button {
+  height: 32px;
+  width: auto;
+  background: transparent;
+  border: none;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  color: $neutral-extra-dark;
+
+  img {
+    height: 24px;
+    width: auto;
+    margin-left: 8px;
+
+    &.hover-icon {
+      display: none;
+    }
+  }
+
+  &:hover {
+    background-color: $accent-medium;
+    color: $neutral-extra-light;
+    border-radius: 30px;
+
+    img {
+      &.default-icon {
+        display: none;
+      }
+
+      &.hover-icon {
+        display: inline;
+      }
+    }
+  }
+}
