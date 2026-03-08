@@ -1,11 +1,8 @@
 @use "../../styles/colors" as *;
 
-header {
+header.layout-top-bar {
   height: 80px;
   width: 100%;
-  top: 0;
-  left: 0;
-  position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,8 +15,22 @@ header {
   }
 }
 
+main {
+  flex: 1;
+  margin: 20px 50px;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
 @media (max-width: 767px) {
-  header > img {
+  header.layout-top-bar > img {
     margin-left: 20px;
+  }
+
+  main {
+    margin: 20px;
   }
 }
