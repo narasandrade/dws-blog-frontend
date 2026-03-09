@@ -7,6 +7,7 @@ import { SortButton } from "@/components/Sort";
 import { Card } from "@/components/Card";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useHomeData } from "@/hooks/useHomeData";
+import { FiltersPanel } from "@/components/Filter/FiltersPanel";
 
 export function Home() {
   const isMobile = useIsMobile();
@@ -73,10 +74,25 @@ export function Home() {
           </div>
         )}
 
-        <div className="home__content__posts-grid">
-          {filteredPosts.map((post) => (
-            <Card key={post.id} post={post} />
-          ))}
+        <div className="home__layout">
+          {!isMobile && (
+            <FiltersPanel
+              categories={categoriesFilterOptions}
+              authors={authorsFilterOptions}
+              selectedCategories={selectedCategories}
+              selectedAuthors={selectedAuthors}
+              onApply={({ categories, authors }) => {
+                setSelectedCategories(categories);
+                setSelectedAuthors(authors);
+              }}
+            />
+          )}
+
+          <div className="home__content__posts-grid">
+            {filteredPosts.map((post) => (
+              <Card key={post.id} post={post} />
+            ))}
+          </div>
         </div>
       </section>
     </>

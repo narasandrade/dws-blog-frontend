@@ -53,6 +53,12 @@ button {
       justify-content: center;
     }
   }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 40px;
+  }
 }
 
 @media (max-width: 767px) {
