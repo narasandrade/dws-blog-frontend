@@ -1,0 +1,7 @@
+.home__posts-grid {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(314px, max-content));
+  justify-content: center;
+}
