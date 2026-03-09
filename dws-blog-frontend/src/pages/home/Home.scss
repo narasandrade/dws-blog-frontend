@@ -1,7 +1,68 @@
-.home__posts-grid {
-  display: grid;
-  gap: 16px;
-  padding: 16px;
-  grid-template-columns: repeat(auto-fit, minmax(314px, max-content));
-  justify-content: center;
+@use "../../styles/colors" as *;
+
+button {
+  cursor: pointer;
+}
+
+.home {
+  &__top-bar {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid $neutral-extra-light;
+
+    > img {
+      height: 30px;
+      width: auto;
+      margin-left: 50px;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    margin: 20px 50px;
+
+    &__controls {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__title-and-sort {
+      display: flex;
+      justify-content: space-between;
+
+      .sort-container {
+        display: flex;
+        align-items: center;
+
+        > span {
+          color: $neutral-extra-dark;
+          font-size: smaller;
+          font-weight: bold;
+        }
+      }
+    }
+
+    &__posts-grid {
+      display: grid;
+      gap: 16px;
+      padding: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(314px, max-content));
+      justify-content: center;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .home {
+    &__top-bar > img {
+      margin-left: 20px;
+    }
+
+    &__content {
+      margin: 20px;
+    }
+  }
 }

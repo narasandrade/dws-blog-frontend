@@ -1,9 +1,9 @@
-import { Root } from "@/pages/root";
+import { Home } from "./pages/home";
 
 function App() {
   return (
     <>
-      <Root />
+      <Home />
     </>
   );
 }

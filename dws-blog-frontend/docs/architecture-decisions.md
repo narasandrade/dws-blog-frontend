@@ -2,4 +2,4 @@
 - Component-driven architecture
 - Create base components to avoid repeating code and customize on top of them when needed
 - Services layer to isolate API logic
-- Separate layouts for mobile and desktop, following SRP. Will make it easier to read, maintain and test.
+- Rely on CSS media queries and useIsMobile hook to change UI to Mobile and Desktop views. Having separate layouts would cause a lot of re-renders and duplicated code.
