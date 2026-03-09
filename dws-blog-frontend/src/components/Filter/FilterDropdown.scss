@@ -1,0 +1,38 @@
+@use "../../styles/colors" as *;
+
+.filter-dropdown {
+  position: relative;
+  display: inline-block;
+
+  &__button .secondary-button {
+    width: 110px;
+  }
+
+  &__menu__options {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    height: fit-content;
+    width: 314px;
+    background: $neutral-lightest;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 10;
+  }
+
+  &__item {
+    font-size: 14px;
+    cursor: pointer;
+
+    &:hover {
+      color: $secondary-medium;
+    }
+
+    &--selected {
+      color: $secondary-medium;
+    }
+  }
+}

@@ -1,8 +1,8 @@
 @use "../../styles/colors" as *;
 
-.filter-dropdown__button {
-  height: 32px;
-  width: 110px;
+.secondary-button {
+  max-height: 32px;
+  width: fit-content;
   background: $neutral-lightest;
   border: 1px solid $secondary-medium;
   border-radius: 30px;
