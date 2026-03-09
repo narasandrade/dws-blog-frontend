@@ -2,6 +2,7 @@ import "./DesktopLayout.scss";
 import dentsuLogo from "@/assets/dentsu-world-services.png";
 import { SearchInput } from "@/components/Search";
 import { SortButton } from "@/components/Sort";
+import { Home } from "@/pages/home";
 
 export function DesktopLayout() {
   return (
@@ -22,6 +23,8 @@ export function DesktopLayout() {
             <SortButton />
           </div>
         </header>
+
+        <Home />
       </main>
     </>
   );

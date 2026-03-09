@@ -3,6 +3,7 @@ import dentsuLogo from "@/assets/dentsu-world-services.png";
 import { SearchButton } from "@/components/Search";
 import { FilterDropdownButton } from "@/components/Filter";
 import { SortButton } from "@/components/Sort";
+import { Home } from "@/pages/home";
 
 export function MobileLayout() {
   return (
@@ -14,10 +15,12 @@ export function MobileLayout() {
       </header>
       <main>
         <header>
-          <FilterDropdownButton placeholder="Category"/>
-          <FilterDropdownButton placeholder="Author"/>
+          <FilterDropdownButton placeholder="Category" />
+          <FilterDropdownButton placeholder="Author" />
           <SortButton />
         </header>
+
+        <Home />
       </main>
     </>
   );
