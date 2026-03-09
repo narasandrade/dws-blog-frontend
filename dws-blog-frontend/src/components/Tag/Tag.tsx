@@ -1,5 +1,9 @@
 import "./Tag.scss";
 
-export function Tag() {
-  return <div className="tag">Category 1</div>;
+interface TagProps {
+  label: string;
+}
+
+export function Tag({ label }: TagProps) {
+  return <div className="tag">{label}</div>;
 }

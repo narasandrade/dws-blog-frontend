@@ -1,39 +1,55 @@
+import { memo } from "react";
 import "./Card.scss";
 import { Tag } from "@/components/Tag";
 import placeholderPicture from "@/assets/card-placeholder-picture.png";
+import type { Post } from "@/types/post";
 
-export function Card() {
+interface CardProps {
+  post: Post;
+}
+
+export const Card = memo(function Card({ post }: CardProps) {
+  const publicationDate = new Date(post.createdAt).toLocaleDateString("en-US", {
+    month: "short",
+    day: "2-digit",
+    year: "numeric",
+  });
+
+  const authorLastName = post.author.name.split(" ").slice(-1)[0];
+
   return (
     <article className="card">
       <header className="card__header">
         <figure>
-          <img src={placeholderPicture} alt="Picture" />
+          <img
+            src={post.thumbnail_url || placeholderPicture}
+            alt={post.title}
+          />
+
           <figcaption>
-            <span className="card__header__publication-date">Jan, 20 2024</span>
+            <span className="card__header__publication-date">
+              {publicationDate}
+            </span>
+
             <span className="dot" />
+
             <span className="card__header__author-lastname">
-              Author Lastname
+              {authorLastName}
             </span>
           </figcaption>
         </figure>
       </header>
 
       <div className="card__content">
-        <h3>
-          This is the title of the article with two lines
-        </h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
-        </p>
+        <h3>{post.title}</h3>
+        <p>{post.content}</p>
       </div>
 
       <footer className="card__footer">
-        <Tag />
-        <Tag />
+        {post.categories.map((category) => (
+          <Tag key={category.id} label={category.name} />
+        ))}
       </footer>
     </article>
   );
-}
+});
