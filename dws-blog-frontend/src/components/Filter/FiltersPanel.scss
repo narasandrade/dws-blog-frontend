@@ -1,0 +1,70 @@
+@use "../../styles/colors" as *;
+
+.filters-panel {
+  height: fit-content;
+  width: 280px;
+  padding: 16px;
+  background-color: $neutral-lightest;
+  border: 1px solid $neutral-extra-light;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    img {
+      height: 24px;
+      width: 24px;
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+
+    &-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__option {
+    text-align: left;
+    padding: 12px 0;
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid $neutral-extra-light;
+    cursor: pointer;
+
+    &:hover {
+      color: $secondary-medium;
+    }
+
+    &--selected {
+      color: $secondary-medium;
+      font-weight: bold;
+    }
+  }
+
+  &__apply-button {
+    margin-top: 12px;
+    padding: 14px;
+    border: none;
+    border-radius: 30px;
+    background-color: $secondary-medium;
+    color: $neutral-lightest;
+    cursor: pointer;
+
+    &:hover {
+      background: $secondary-dark;
+    }
+  }
+}
