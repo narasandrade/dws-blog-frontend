@@ -92,7 +92,7 @@ export function Home() {
             {filteredPosts.map((post) => (
               <Card key={post.id} post={post} />
             ))}
-          </div>
+          {filteredPosts && <Posts posts={filteredPosts} />}
         </div>
       </section>
     </>
