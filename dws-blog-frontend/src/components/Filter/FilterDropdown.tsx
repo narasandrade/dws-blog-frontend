@@ -7,7 +7,7 @@ import { SecondaryButton } from "../SecondaryButton";
 import { useClickOutside } from "@/hooks/useClickOutside";
 
 type Props = {
-  options: FilterOption[];
+  options: FilterOption[] | undefined;
   selected: string[];
   onChange: (values: string[]) => void;
   label?: string;
@@ -33,10 +33,10 @@ export function FilterDropdown({
   }
 
   const selectedLabels = options
-    .filter((option) => selected.includes(option.value))
+    ?.filter((option) => selected.includes(option.value))
     .map((option) => option.label);
 
-  const showSelectedLabels = selectedLabels.length > 0;
+  const showSelectedLabels = selectedLabels && selectedLabels.length > 0;
 
   return (
     <div className="filter-dropdown" ref={dropdownRef}>
@@ -51,7 +51,7 @@ export function FilterDropdown({
       {open && (
         <div className="filter-dropdown__menu">
           <div className="filter-dropdown__menu__options">
-            {options.map((option) => {
+            {options?.map((option) => {
               const isSelected = selected.includes(option.value);
 
               return (

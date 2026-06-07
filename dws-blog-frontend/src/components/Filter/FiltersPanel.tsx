@@ -4,8 +4,8 @@ import filterIcon from "@/assets/filter.png";
 import type { FilterOption } from "@/types/filterOption";
 
 type Props = {
-  categories: FilterOption[];
-  authors: FilterOption[];
+  categories: FilterOption[] | undefined;
+  authors: FilterOption[] | undefined;
   selectedCategories: string[];
   selectedAuthors: string[];
   onApply: (filters: { categories: string[]; authors: string[] }) => void;
@@ -50,7 +50,7 @@ export function FiltersPanel({
       <div className="filters-panel__section">
         <h3>Category</h3>
 
-        {categories.map((category) => {
+        {categories?.map((category) => {
           const selected = tempCategories.includes(category.value);
 
           return (
@@ -72,7 +72,7 @@ export function FiltersPanel({
       <div className="filters-panel__section">
         <h3>Author</h3>
 
-        {authors.map((author) => {
+        {authors?.map((author) => {
           const selected = tempAuthors.includes(author.value);
 
           return (
