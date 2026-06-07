@@ -1,27 +1,38 @@
-import "./Home.scss";
 import { useState } from "react";
-import dentsuLogo from "@/assets/dentsu-world-services.png";
-import { SearchButton, SearchInput } from "@/components/Search";
-import { FilterDropdown } from "@/components/Filter";
-import { SortButton } from "@/components/Sort";
-import { Card } from "@/components/Card";
+import {
+  FilterDropdown,
+  FiltersPanel,
+  SearchButton,
+  SearchInput,
+  SortButton,
+} from "@/components";
 import { useIsMobile } from "@/hooks/useIsMobile";
-import { useHomeData } from "@/hooks/useHomeData";
-import { FiltersPanel } from "@/components/Filter/FiltersPanel";
+import { usePosts } from "@/hooks/usePosts";
+import { useCategories } from "@/hooks/useCategories";
+import { useAuthors } from "@/hooks/useAuthors";
+import { Posts } from "./Posts";
+import dentsuLogo from "@/assets/dentsu-world-services.png";
+import "./Home.scss";
 
 export function Home() {
   const isMobile = useIsMobile();
-  const {
-    posts,
-    authorsFilterOptions,
-    categoriesFilterOptions,
-    loading,
-    error,
-  } = useHomeData();
+  const { posts, isLoading: isPostsLoading, error: postsError } = usePosts();
+  const { categories } = useCategories();
+  const { authors } = useAuthors();
   const [selectedAuthors, setSelectedAuthors] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
-  const filteredPosts = posts.filter((post) => {
+  const categoriesFilterOptions = categories?.map((category) => ({
+    label: category.name,
+    value: category.id,
+  }));
+
+  const authorsFilterOptions = authors?.map((author) => ({
+    label: author.name,
+    value: author.id,
+  }));
+
+  const filteredPosts = posts?.filter((post) => {
     const authorMatch =
       selectedAuthors.length === 0 || selectedAuthors.includes(post.authorId);
 
@@ -33,9 +44,6 @@ export function Home() {
 
     return authorMatch && categoryMatch;
   });
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
 
   return (
     <>
@@ -88,11 +96,11 @@ export function Home() {
             />
           )}
 
-          <div className="home__content__posts-grid">
-            {filteredPosts.map((post) => (
-              <Card key={post.id} post={post} />
-            ))}
-          </div>
+          {isPostsLoading && <p>Loading posts...</p>}
+
+          {postsError && <p>Error loading posts: {postsError.message}</p>}
+
+          {filteredPosts && <Posts posts={filteredPosts} />}
         </div>
       </section>
     </>

@@ -1,5 +1,5 @@
-import "./SearchButton.scss";
 import searchIcon from "@/assets/search.png";
+import "./SearchButton.scss";
 
 export function SearchButton() {
   return (

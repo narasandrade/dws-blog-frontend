@@ -1,5 +1,5 @@
-import { api } from "./api";
 import { type Author } from "@/types/author";
+import { api } from "./api";
 
 export const authorsService = {
   async getAll(): Promise<Author[]> {

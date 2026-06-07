@@ -1,6 +1,6 @@
-import "./BackButton.scss";
 import arrowBackIconDefault from "@/assets/arrow-back-secondary-medium.png";
 import arrowBackIconHover from "@/assets/arrow-back-secondary-dark.png";
+import "./BackButton.scss";
 
 export function BackButton() {
   return (

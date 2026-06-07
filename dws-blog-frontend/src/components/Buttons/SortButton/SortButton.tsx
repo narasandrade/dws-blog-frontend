@@ -1,6 +1,6 @@
-import "./SortButton.scss";
 import sortIconDefault from "@/assets/sort-accent-medium.png";
 import sortIconHover from "@/assets/sort-neutral-extra-light.png";
+import "./SortButton.scss";
 
 export function SortButton() {
   return (

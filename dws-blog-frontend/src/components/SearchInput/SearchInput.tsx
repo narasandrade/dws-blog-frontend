@@ -1,5 +1,5 @@
+import { SearchButton } from "@/components/Buttons";
 import "./SearchInput.scss";
-import { SearchButton } from "./SearchButton";
 
 export function SearchInput() {
   return (

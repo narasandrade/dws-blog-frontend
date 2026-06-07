@@ -1,5 +1,5 @@
-import { api } from "./api";
 import { type Post } from "@/types/post";
+import { api } from "./api";
 
 export const postsService = {
   async getAll(): Promise<Post[]> {
