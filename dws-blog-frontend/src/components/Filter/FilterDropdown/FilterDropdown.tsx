@@ -1,10 +1,10 @@
-import "./FilterDropdown.scss";
 import { useRef, useState } from "react";
+import type { FilterOption } from "@/types/filterOption";
+import { useClickOutside } from "@/hooks/useClickOutside";
+import { SecondaryButton } from "@/components/Buttons";
 import arrowExpandIcon from "@/assets/arrow-expand-secondary-medium.png";
 import clearIcon from "@/assets/x-secondary-medium.png";
-import type { FilterOption } from "@/types/filterOption";
-import { SecondaryButton } from "../SecondaryButton";
-import { useClickOutside } from "@/hooks/useClickOutside";
+import "./FilterDropdown.scss";
 
 type Props = {
   options: FilterOption[] | undefined;

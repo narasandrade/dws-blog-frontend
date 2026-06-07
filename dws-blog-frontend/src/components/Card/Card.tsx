@@ -1,8 +1,8 @@
 import { memo } from "react";
-import "./Card.scss";
-import { Tag } from "@/components/Tag";
-import placeholderPicture from "@/assets/card-placeholder-picture.png";
+import { Tag } from "@/components";
 import type { Post } from "@/types/post";
+import placeholderPicture from "@/assets/card-placeholder-picture.png";
+import "./Card.scss";
 
 interface CardProps {
   post: Post;

@@ -1,7 +1,7 @@
-import "./FiltersPanel.scss";
 import { useState } from "react";
-import filterIcon from "@/assets/filter.png";
 import type { FilterOption } from "@/types/filterOption";
+import filterIcon from "@/assets/filter.png";
+import "./FiltersPanel.scss";
 
 type Props = {
   categories: FilterOption[] | undefined;

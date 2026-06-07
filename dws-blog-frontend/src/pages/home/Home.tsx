@@ -1,15 +1,18 @@
-import "./Home.scss";
 import { useState } from "react";
-import dentsuLogo from "@/assets/dentsu-world-services.png";
-import { SearchButton, SearchInput } from "@/components/Search";
-import { FilterDropdown } from "@/components/Filter";
-import { SortButton } from "@/components/Sort";
+import {
+  FilterDropdown,
+  FiltersPanel,
+  SearchButton,
+  SearchInput,
+  SortButton,
+} from "@/components";
 import { useIsMobile } from "@/hooks/useIsMobile";
-import { FiltersPanel } from "@/components/Filter/FiltersPanel";
 import { usePosts } from "@/hooks/usePosts";
 import { useCategories } from "@/hooks/useCategories";
 import { useAuthors } from "@/hooks/useAuthors";
 import { Posts } from "./Posts";
+import dentsuLogo from "@/assets/dentsu-world-services.png";
+import "./Home.scss";
 
 export function Home() {
   const isMobile = useIsMobile();
