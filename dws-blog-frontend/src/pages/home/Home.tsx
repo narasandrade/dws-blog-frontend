@@ -10,7 +10,7 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 import { usePosts } from "@/hooks/usePosts";
 import { useCategories } from "@/hooks/useCategories";
 import { useAuthors } from "@/hooks/useAuthors";
-import { Posts } from "./Posts";
+import { Posts } from "./posts/Posts";
 import dentsuLogo from "@/assets/dentsu-world-services.png";
 import "./Home.scss";
 
@@ -99,6 +99,10 @@ export function Home() {
           {isPostsLoading && <p>Loading posts...</p>}
 
           {postsError && <p>Error loading posts: {postsError.message}</p>}
+
+          {!isPostsLoading && !postsError && !filteredPosts?.length && (
+            <p>No posts found.</p>
+          )}
 
           {filteredPosts && <Posts posts={filteredPosts} />}
         </div>
