@@ -5,7 +5,7 @@ const fetchCategories = () => categoriesService.getAll();
 
 export function useCategories() {
   const query = useQuery({
-    queryFn: () => fetchCategories(),
+    queryFn: fetchCategories,
     queryKey: ["categories"],
     refetchOnWindowFocus: true,
   });
