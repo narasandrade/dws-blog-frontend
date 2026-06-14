@@ -1,17 +1,10 @@
 import { useState } from "react";
-import {
-  FilterDropdown,
-  FiltersPanel,
-  SearchButton,
-  SearchInput,
-  SortButton,
-} from "@/components";
+import { FilterDropdown, FiltersPanel, SortButton } from "@/components";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { usePosts } from "@/hooks/usePosts";
 import { useCategories } from "@/hooks/useCategories";
 import { useAuthors } from "@/hooks/useAuthors";
-import { Posts } from "./posts/Posts";
-import dentsuLogo from "@/assets/dentsu-world-services.png";
+import { Posts } from "./posts";
 import "./Home.scss";
 
 export function Home() {
@@ -47,12 +40,6 @@ export function Home() {
 
   return (
     <>
-      <header className="home__top-bar">
-        <img src={dentsuLogo} alt="Dentsu world services" />
-
-        {isMobile ? <SearchButton /> : <SearchInput />}
-      </header>
-
       <section className="home__content">
         {isMobile ? (
           <div className="home__content__controls">
