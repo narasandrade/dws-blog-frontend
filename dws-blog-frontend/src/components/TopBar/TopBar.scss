@@ -1,0 +1,22 @@
+@use "@/styles/colors" as *;
+
+.top-bar {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid $neutral-extra-light;
+
+  > img {
+    height: 30px;
+    width: auto;
+    margin-left: 50px;
+  }
+}
+
+@media (max-width: 767px) {
+  .top-bar > img {
+    margin-left: 20px;
+  }
+}
