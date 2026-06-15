@@ -1,0 +1,33 @@
+@use "@/styles/colors" as *;
+
+.article-meta-info {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  &__author-photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__writer-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__author-name {
+    color: $neutral-darkest;
+    font-size: medium;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  &__published-date {
+    color: $neutral-dark;
+    font-size: smaller;
+    margin-left: auto;
+  }
+}

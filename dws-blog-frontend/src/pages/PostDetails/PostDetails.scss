@@ -1,0 +1,37 @@
+@use "@/styles/colors" as *;
+
+.post-details {
+  display: flex;
+  gap: 5rem;
+  padding: 3rem;
+
+  aside {
+    display: flex;
+    align-items: start;
+  }
+
+  &__article {
+    flex: 1;
+    margin-right: 10rem;
+
+    &-title {
+      color: $neutral-darkest;
+      margin-bottom: 1rem;
+    }
+
+    &-thumbnail {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+    }
+
+    &-content {
+      color: $neutral-darkest;
+      line-height: 1.6;
+      border-bottom: 2px solid $neutral-extra-light;
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+}
