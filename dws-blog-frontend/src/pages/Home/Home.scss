@@ -29,13 +29,13 @@ button {
         }
       }
     }
-  }
 
-  &__layout {
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 40px;
-    justify-content: end;
+    &__layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+      justify-content: end;
+    }
   }
 }
 

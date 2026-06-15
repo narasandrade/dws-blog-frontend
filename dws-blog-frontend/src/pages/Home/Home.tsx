@@ -4,7 +4,7 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 import { usePosts } from "@/hooks/usePosts";
 import { useCategories } from "@/hooks/useCategories";
 import { useAuthors } from "@/hooks/useAuthors";
-import { Posts } from "./posts";
+import { Posts } from "./Posts";
 import "./Home.scss";
 
 export function Home() {
@@ -39,61 +39,59 @@ export function Home() {
   });
 
   return (
-    <>
-      <section className="home__content">
-        {isMobile ? (
-          <div className="home__content__controls">
-            <FilterDropdown
-              options={categoriesFilterOptions}
-              selected={selectedCategories}
-              onChange={setSelectedCategories}
-              label="Category"
-            />
-            <FilterDropdown
-              options={authorsFilterOptions}
-              selected={selectedAuthors}
-              onChange={setSelectedAuthors}
-              label="Author"
-            />
+    <section className="home__content">
+      {isMobile ? (
+        <div className="home__content__controls">
+          <FilterDropdown
+            options={categoriesFilterOptions}
+            selected={selectedCategories}
+            onChange={setSelectedCategories}
+            label="Category"
+          />
+          <FilterDropdown
+            options={authorsFilterOptions}
+            selected={selectedAuthors}
+            onChange={setSelectedAuthors}
+            label="Author"
+          />
+          <SortButton />
+        </div>
+      ) : (
+        <div className="home__content__title-and-sort">
+          <h1>DWS blog</h1>
+
+          <div className="sort-container">
+            <span>Sort by:</span>
+
             <SortButton />
           </div>
-        ) : (
-          <div className="home__content__title-and-sort">
-            <h1>DWS blog</h1>
+        </div>
+      )}
 
-            <div className="sort-container">
-              <span>Sort by:</span>
-
-              <SortButton />
-            </div>
-          </div>
+      <div className="home__content__layout">
+        {!isMobile && (
+          <FiltersPanel
+            categories={categoriesFilterOptions}
+            authors={authorsFilterOptions}
+            selectedCategories={selectedCategories}
+            selectedAuthors={selectedAuthors}
+            onApply={({ categories, authors }) => {
+              setSelectedCategories(categories);
+              setSelectedAuthors(authors);
+            }}
+          />
         )}
 
-        <div className="home__layout">
-          {!isMobile && (
-            <FiltersPanel
-              categories={categoriesFilterOptions}
-              authors={authorsFilterOptions}
-              selectedCategories={selectedCategories}
-              selectedAuthors={selectedAuthors}
-              onApply={({ categories, authors }) => {
-                setSelectedCategories(categories);
-                setSelectedAuthors(authors);
-              }}
-            />
-          )}
+        {isPostsLoading && <p>Loading posts...</p>}
 
-          {isPostsLoading && <p>Loading posts...</p>}
+        {postsError && <p>Error loading posts: {postsError.message}</p>}
 
-          {postsError && <p>Error loading posts: {postsError.message}</p>}
+        {!isPostsLoading && !postsError && !filteredPosts?.length && (
+          <p>No posts found.</p>
+        )}
 
-          {!isPostsLoading && !postsError && !filteredPosts?.length && (
-            <p>No posts found.</p>
-          )}
-
-          {filteredPosts && <Posts posts={filteredPosts} />}
-        </div>
-      </section>
-    </>
+        {filteredPosts && <Posts posts={filteredPosts} />}
+      </div>
+    </section>
   );
 }
