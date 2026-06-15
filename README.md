@@ -5,8 +5,9 @@ This project was built as part of a technical assessment.
 ## Tech Stack
 - React
 - TypeScript
-- Vite
+- TanStack React Query
 - SCSS
+- Vite
 
 ## Getting Started
 
@@ -27,18 +28,6 @@ Then open:
 ```
 http://localhost:5173
 ```
-
-## Improvements
-
-Due to time constraints, the following improvements were identified but not implemented:
-
-- Implement Individual post view
-- Implement Sort
-- Implement Skeleton loading for all posts view
-- Background gradient more similar to the mockup
-- Replace png icons with svg icons
-- Write more unit tests
-- During development, a Lighthouse audit was executed using Chrome DevTools. Accessibility and Best Practices had a great score, SEO was good, but Performance was lower than 60. If I had more time, I would follow Lighthouse's insights to optimize the performance
 
 ## Architecture decisions
 
