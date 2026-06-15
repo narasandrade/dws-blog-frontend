@@ -5,27 +5,29 @@
   display: inline-block;
 
   &__button .secondary-button {
-    width: 110px;
+    width: 6.875rem;
   }
 
   &__menu__options {
     position: absolute;
-    top: calc(100% + 8px);
+    top: calc(100% + 0.5rem);
     left: 0;
     height: fit-content;
-    width: 314px;
+    width: 19.625rem;
     background: $neutral-lightest;
-    border-radius: 16px;
-    padding: 16px;
+    border-radius: 1rem;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 0.5rem;
     z-index: 10;
+    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.08);
   }
 
   &__item {
-    font-size: 14px;
+    font-size: 0.875rem;
     cursor: pointer;
+    color: $neutral-darkest;
 
     &:hover {
       color: $secondary-medium;

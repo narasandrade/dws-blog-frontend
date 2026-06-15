@@ -2,22 +2,29 @@
 
 .filters-panel {
   height: fit-content;
-  width: 280px;
-  padding: 16px;
+  width: 17.5rem;
+  padding: 1rem;
   background-color: $neutral-lightest;
   border: 1px solid $neutral-extra-light;
-  border-radius: 16px;
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
 
   &__header {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0.625rem;
+    margin-bottom: 0.5rem;
 
     img {
-      height: 24px;
-      width: 24px;
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: $neutral-darkest;
     }
   }
 
@@ -25,24 +32,25 @@
     display: flex;
     flex-direction: column;
 
-    &-title {
-      font-size: 14px;
+    h3 {
+      font-size: 0.875rem;
       font-weight: 600;
+      color: $neutral-extra-dark;
+      margin-top: 0.75rem;
+      margin-bottom: 0.25rem;
     }
-  }
-
-  &__options {
-    display: flex;
-    flex-direction: column;
   }
 
   &__option {
     text-align: left;
-    padding: 12px 0;
+    padding: 0.75rem 0;
     border: none;
     background: transparent;
     border-bottom: 1px solid $neutral-extra-light;
     cursor: pointer;
+    font-size: 0.875rem;
+    font-family: "Open Sans", sans-serif;
+    color: $neutral-darkest;
 
     &:hover {
       color: $secondary-medium;
@@ -50,18 +58,21 @@
 
     &--selected {
       color: $secondary-medium;
-      font-weight: bold;
+      font-weight: 700;
     }
   }
 
   &__apply-button {
-    margin-top: 12px;
-    padding: 14px;
+    margin-top: 0.75rem;
+    padding: 0.875rem;
     border: none;
-    border-radius: 30px;
+    border-radius: 1.875rem;
     background-color: $secondary-medium;
     color: $neutral-lightest;
     cursor: pointer;
+    font-size: 0.875rem;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
 
     &:hover {
       background: $secondary-dark;

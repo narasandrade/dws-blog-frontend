@@ -1,7 +1,12 @@
 .posts-grid {
   display: grid;
-  gap: 16px;
-  padding: 16px;
-  grid-template-columns: repeat(auto-fit, minmax(314px, max-content));
-  justify-content: end;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(19.625rem, 1fr));
+  align-items: start;
+}
+
+@media (max-width: 767px) {
+  .posts-grid {
+    grid-template-columns: 1fr;
+  }
 }

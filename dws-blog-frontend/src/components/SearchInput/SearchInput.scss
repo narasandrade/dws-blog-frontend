@@ -2,16 +2,23 @@
 
 header .search-container {
   display: flex;
+  align-items: center;
   background: $neutral-lightest;
   border: 2px solid $neutral-extra-light;
-  border-radius: 30px;
-  padding: 8px 8px 8px 16px;
-  margin-right: 50px;
+  border-radius: 1.875rem;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
 
   input {
-    width: 400px;
+    width: 25rem;
     background: $neutral-lightest;
     border: none;
-    font-size: medium;
+    outline: none;
+    font-size: 1rem;
+    font-family: "Open Sans", sans-serif;
+    color: $neutral-darkest;
+
+    &::placeholder {
+      color: $neutral-medium;
+    }
   }
 }
