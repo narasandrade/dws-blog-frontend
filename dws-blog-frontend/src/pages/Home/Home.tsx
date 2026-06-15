@@ -4,7 +4,7 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 import { usePosts } from "@/hooks/usePosts";
 import { useCategories } from "@/hooks/useCategories";
 import { useAuthors } from "@/hooks/useAuthors";
-import { Posts } from "./Posts";
+import { Posts } from "@/components/Posts";
 import "./Home.scss";
 
 export function Home() {
