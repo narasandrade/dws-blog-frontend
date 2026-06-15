@@ -1,5 +1,29 @@
 @use "./styles/colors" as *;
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
 :root {
   background:
     radial-gradient(
@@ -12,7 +36,6 @@
       $background-gradient-accent-2 0%,
       transparent 50%
     ),
-    //radial-gradient(circle at 90% 40%, $background-gradient-accent-3 0%, transparent 50%),
     #ffffff;
 }
 
@@ -22,4 +45,7 @@ body {
   display: flex;
   flex-direction: column;
   font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: $neutral-darkest;
 }

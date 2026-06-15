@@ -1,17 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import { postsService } from "@/services/posts.service";
 
-const fetchPosts = () => postsService.getAll();
+const fetchPost = (id: string) => postsService.getById(id);
 
-export function usePosts() {
+export function usePost(id: string) {
   const query = useQuery({
-    queryFn: fetchPosts,
-    queryKey: ["posts"],
+    queryFn: () => fetchPost(id),
+    queryKey: ["post", id],
     refetchOnWindowFocus: true,
   });
 
   return {
     ...query,
-    posts: query.data,
+    post: query.data,
   };
 }

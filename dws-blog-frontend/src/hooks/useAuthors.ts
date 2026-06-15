@@ -5,7 +5,7 @@ const fetchAuthors = () => authorsService.getAll();
 
 export function useAuthors() {
   const query = useQuery({
-    queryFn: () => fetchAuthors(),
+    queryFn: fetchAuthors,
     queryKey: ["authors"],
     refetchOnWindowFocus: true,
   });

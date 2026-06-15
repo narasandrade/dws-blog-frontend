@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import type { FilterOption } from "@/types/filterOption";
 import { useClickOutside } from "@/hooks/useClickOutside";
-import { SecondaryButton } from "@/components/Buttons";
+import { SecondaryButton } from "@/components";
 import arrowExpandIcon from "@/assets/arrow-expand-secondary-medium.png";
 import clearIcon from "@/assets/x-secondary-medium.png";
 import "./FilterDropdown.scss";

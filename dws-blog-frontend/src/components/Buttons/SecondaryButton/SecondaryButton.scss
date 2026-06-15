@@ -1,26 +1,27 @@
 @use "@/styles/colors" as *;
 
 .secondary-button {
-  max-height: 32px;
+  height: 2rem;
   width: fit-content;
   background: $neutral-lightest;
   border: 1px solid $secondary-medium;
-  border-radius: 30px;
+  border-radius: 1.875rem;
   color: $secondary-medium;
-  padding: 12px 12px 12px 16px;
+  padding: 0 0.75rem 0 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 0.875rem;
+  font-family: "Open Sans", sans-serif;
+  cursor: pointer;
 
   img {
-    width: 18px;
-    margin-left: 4px;
+    width: 1.125rem;
+    margin-left: 0.25rem;
   }
 
   &:hover {
-    //would be 'background: $secondary-medium-opacity;'
-    //following the info in the design layout, but it doesn't match the pictures
     background: #ede2e8;
   }
 }

@@ -7,4 +7,9 @@ export const postsService = {
 
     return data;
   },
+  async getById(id: string): Promise<Post> {
+    const { data } = await api.get(`/posts/${id}`);
+
+    return data;
+  },
 };

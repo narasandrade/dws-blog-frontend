@@ -1,0 +1,22 @@
+@use "@/styles/colors" as *;
+
+.top-bar {
+  height: 5rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3.125rem;
+  border-bottom: 2px solid $neutral-extra-light;
+
+  > img {
+    height: 1.875rem;
+    width: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .top-bar {
+    padding: 0 1.25rem;
+  }
+}
