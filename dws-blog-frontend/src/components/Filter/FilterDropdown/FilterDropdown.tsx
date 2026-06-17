@@ -55,7 +55,7 @@ export function FilterDropdown({
               const isSelected = selected.includes(option.value);
 
               return (
-                <div
+                <button
                   key={option.value}
                   className={`filter-dropdown__item ${
                     isSelected ? "filter-dropdown__item--selected" : ""
@@ -63,7 +63,7 @@ export function FilterDropdown({
                   onClick={() => toggleOption(option.value)}
                 >
                   {option.label}
-                </div>
+                </button>
               );
             })}
           </div>
