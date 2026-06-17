@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { FilterDropdown, FiltersPanel, SortButton } from "@/components";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { usePosts } from "@/hooks/usePosts";
@@ -12,8 +12,28 @@ export function Home() {
   const { posts, isLoading: isPostsLoading, error: postsError } = usePosts();
   const { categories } = useCategories();
   const { authors } = useAuthors();
-  const [selectedAuthors, setSelectedAuthors] = useState<string[]>([]);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedCategories =
+    searchParams.get("categories")?.split(",").filter(Boolean) ?? [];
+  const selectedAuthors =
+    searchParams.get("authors")?.split(",").filter(Boolean) ?? [];
+  const sortOrder = (searchParams.get("sort") ?? "newest") as
+    | "newest"
+    | "oldest";
+
+  function updateParams(patch: Record<string, string | null>) {
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        Object.entries(patch).forEach(([key, value]) =>
+          value ? next.set(key, value) : next.delete(key),
+        );
+        return next;
+      },
+      { replace: true },
+    );
+  }
 
   const categoriesFilterOptions = categories?.map((category) => ({
     label: category.name,
@@ -38,6 +58,16 @@ export function Home() {
     return authorMatch && categoryMatch;
   });
 
+  const sortedPosts = filteredPosts?.slice().sort((a, b) => {
+    const diff =
+      new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    return sortOrder === "newest" ? diff : -diff;
+  });
+
+  function toggleSort() {
+    updateParams({ sort: sortOrder === "newest" ? "oldest" : "newest" });
+  }
+
   return (
     <section className="home__content">
       {isMobile ? (
@@ -45,16 +75,18 @@ export function Home() {
           <FilterDropdown
             options={categoriesFilterOptions}
             selected={selectedCategories}
-            onChange={setSelectedCategories}
+            onChange={(ids) =>
+              updateParams({ categories: ids.join(",") || null })
+            }
             label="Category"
           />
           <FilterDropdown
             options={authorsFilterOptions}
             selected={selectedAuthors}
-            onChange={setSelectedAuthors}
+            onChange={(ids) => updateParams({ authors: ids.join(",") || null })}
             label="Author"
           />
-          <SortButton />
+          <SortButton sortOrder={sortOrder} onToggle={toggleSort} />
         </div>
       ) : (
         <div className="home__content__title-and-sort">
@@ -63,7 +95,7 @@ export function Home() {
           <div className="sort-container">
             <span>Sort by:</span>
 
-            <SortButton />
+            <SortButton sortOrder={sortOrder} onToggle={toggleSort} />
           </div>
         </div>
       )}
@@ -76,9 +108,12 @@ export function Home() {
             selectedCategories={selectedCategories}
             selectedAuthors={selectedAuthors}
             onApply={({ categories, authors }) => {
-              setSelectedCategories(categories);
-              setSelectedAuthors(authors);
+              updateParams({
+                categories: categories.join(",") || null,
+                authors: authors.join(",") || null,
+              });
             }}
+            onClear={() => updateParams({ categories: null, authors: null })}
           />
         )}
 
@@ -86,11 +121,11 @@ export function Home() {
 
         {postsError && <p>Error loading posts: {postsError.message}</p>}
 
-        {!isPostsLoading && !postsError && !filteredPosts?.length && (
+        {!isPostsLoading && !postsError && !sortedPosts?.length && (
           <p>No posts found.</p>
         )}
 
-        {filteredPosts && <Posts posts={filteredPosts} />}
+        {sortedPosts && <Posts posts={sortedPosts} />}
       </div>
     </section>
   );
