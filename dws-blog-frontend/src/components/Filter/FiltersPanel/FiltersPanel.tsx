@@ -9,6 +9,7 @@ type Props = {
   selectedCategories: string[];
   selectedAuthors: string[];
   onApply: (filters: { categories: string[]; authors: string[] }) => void;
+  onClear?: () => void;
 };
 
 export function FiltersPanel({
@@ -17,6 +18,7 @@ export function FiltersPanel({
   selectedCategories,
   selectedAuthors,
   onApply,
+  onClear,
 }: Props) {
   const [tempCategories, setTempCategories] = useState(selectedCategories);
   const [tempAuthors, setTempAuthors] = useState(selectedAuthors);
@@ -91,9 +93,24 @@ export function FiltersPanel({
         })}
       </div>
 
-      <button className="filters-panel__apply-button" onClick={applyFilters}>
-        Apply filters
-      </button>
+      <div className="filters-panel__actions">
+        <button className="filters-panel__apply-button" onClick={applyFilters}>
+          Apply filters
+        </button>
+
+        {onClear && (selectedCategories.length > 0 || selectedAuthors.length > 0) && (
+          <button
+            className="filters-panel__clear-button"
+            onClick={() => {
+              setTempCategories([]);
+              setTempAuthors([]);
+              onClear();
+            }}
+          >
+            Clear filters
+          </button>
+        )}
+      </div>
     </aside>
   );
 }

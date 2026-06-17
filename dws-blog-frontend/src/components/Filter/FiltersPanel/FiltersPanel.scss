@@ -62,8 +62,14 @@
     }
   }
 
-  &__apply-button {
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     margin-top: 0.75rem;
+  }
+
+  &__apply-button {
     padding: 0.875rem;
     border: none;
     border-radius: 1.875rem;
@@ -76,6 +82,23 @@
 
     &:hover {
       background: $secondary-dark;
+    }
+  }
+
+  &__clear-button {
+    padding: 0.875rem;
+    border: 1px solid $secondary-medium;
+    border-radius: 1.875rem;
+    background-color: transparent;
+    color: $secondary-medium;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+
+    &:hover {
+      background-color: $secondary-medium;
+      color: $neutral-lightest;
     }
   }
 }
