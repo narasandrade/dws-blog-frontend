@@ -21,6 +21,7 @@ export function Home() {
   const sortOrder = (searchParams.get("sort") ?? "newest") as
     | "newest"
     | "oldest";
+  const searchQuery = searchParams.get("q")?.trim().toLowerCase() ?? "";
 
   function updateParams(patch: Record<string, string | null>) {
     setSearchParams(
@@ -58,7 +59,18 @@ export function Home() {
     return authorMatch && categoryMatch;
   });
 
-  const sortedPosts = filteredPosts?.slice().sort((a, b) => {
+  const searchedPosts = filteredPosts?.filter((post) => {
+    if (!searchQuery) return true;
+    return (
+      post.title.toLowerCase().includes(searchQuery) ||
+      post.author.name.toLowerCase().includes(searchQuery) ||
+      post.categories.some((category) =>
+        category.name.toLowerCase().includes(searchQuery),
+      )
+    );
+  });
+
+  const sortedPosts = searchedPosts?.slice().sort((a, b) => {
     const diff =
       new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
     return sortOrder === "newest" ? diff : -diff;
