@@ -3,7 +3,6 @@ import type { FilterOption } from "@/types/filterOption";
 import { useClickOutside } from "@/hooks/useClickOutside";
 import { SecondaryButton } from "@/components";
 import arrowExpandIcon from "@/assets/arrow-expand-secondary-medium.png";
-import clearIcon from "@/assets/x-secondary-medium.png";
 import "./FilterDropdown.scss";
 
 type Props = {
@@ -32,21 +31,16 @@ export function FilterDropdown({
     }
   }
 
-  const selectedLabels = options
-    ?.filter((option) => selected.includes(option.value))
-    .map((option) => option.label);
-
-  const showSelectedLabels = selectedLabels && selectedLabels.length > 0;
-
   return (
     <div className="filter-dropdown" ref={dropdownRef}>
-      <div className="filter-dropdown__button">
-        <SecondaryButton
-          label={label}
-          icon={arrowExpandIcon}
-          onClick={() => setOpen(!open)}
-        />
-      </div>
+      <SecondaryButton
+        className={
+          open ? "filter-dropdown__button--active" : "filter-dropdown__button"
+        }
+        label={label}
+        icon={arrowExpandIcon}
+        onClick={() => setOpen(!open)}
+      />
 
       {open && (
         <div className="filter-dropdown__menu">
@@ -68,14 +62,6 @@ export function FilterDropdown({
             })}
           </div>
         </div>
-      )}
-
-      {open && showSelectedLabels && (
-        <SecondaryButton
-          label={selectedLabels.join(", ")}
-          icon={clearIcon}
-          onClick={() => onChange([])}
-        />
       )}
     </div>
   );
