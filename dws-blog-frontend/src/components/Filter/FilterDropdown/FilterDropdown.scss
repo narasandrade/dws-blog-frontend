@@ -4,8 +4,8 @@
   position: relative;
   display: inline-block;
 
-  &__button .secondary-button {
-    width: 6.875rem;
+  &__button--active {
+    background: #ede2e8;
   }
 
   &__menu__options {
@@ -21,10 +21,12 @@
     flex-direction: column;
     gap: 0.5rem;
     z-index: 10;
-    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.08);
   }
 
   &__item {
+    border: none;
+    text-align: left;
+    height: 1.75rem;
     font-size: 0.875rem;
     cursor: pointer;
     color: $neutral-darkest;

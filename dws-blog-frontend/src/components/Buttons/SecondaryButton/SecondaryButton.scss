@@ -9,6 +9,7 @@
   color: $secondary-medium;
   padding: 0 0.75rem 0 1rem;
   display: flex;
+  gap: 0.25rem;
   align-items: center;
   justify-content: space-between;
   font-weight: 700;
@@ -18,7 +19,6 @@
 
   img {
     width: 1.125rem;
-    margin-left: 0.25rem;
   }
 
   &:hover {

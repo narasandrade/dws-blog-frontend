@@ -1,10 +1,16 @@
 import { useSearchParams } from "react-router-dom";
-import { FilterDropdown, FiltersPanel, SortButton } from "@/components";
+import clearIcon from "@/assets/x-secondary-medium.png";
+import {
+  FilterDropdown,
+  FiltersPanel,
+  Posts,
+  SecondaryButton,
+  SortButton,
+} from "@/components";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { usePosts } from "@/hooks/usePosts";
 import { useCategories } from "@/hooks/useCategories";
 import { useAuthors } from "@/hooks/useAuthors";
-import { Posts } from "@/components/Posts";
 import "./Home.scss";
 
 export function Home() {
@@ -21,6 +27,7 @@ export function Home() {
   const sortOrder = (searchParams.get("sort") ?? "newest") as
     | "newest"
     | "oldest";
+  const searchQuery = searchParams.get("q")?.trim().toLowerCase() ?? "";
 
   function updateParams(patch: Record<string, string | null>) {
     setSearchParams(
@@ -45,6 +52,14 @@ export function Home() {
     value: author.id,
   }));
 
+  const selectedCategoriesLabels = categoriesFilterOptions
+    ?.filter((option) => selectedCategories.includes(option.value))
+    .map((option) => option.label);
+
+  const selectedAuthorsLabels = authorsFilterOptions
+    ?.filter((option) => selectedAuthors.includes(option.value))
+    .map((option) => option.label);
+
   const filteredPosts = posts?.filter((post) => {
     const authorMatch =
       selectedAuthors.length === 0 || selectedAuthors.includes(post.authorId);
@@ -58,7 +73,18 @@ export function Home() {
     return authorMatch && categoryMatch;
   });
 
-  const sortedPosts = filteredPosts?.slice().sort((a, b) => {
+  const searchedPosts = filteredPosts?.filter((post) => {
+    if (!searchQuery) return true;
+    return (
+      post.title.toLowerCase().includes(searchQuery) ||
+      post.author.name.toLowerCase().includes(searchQuery) ||
+      post.categories.some((category) =>
+        category.name.toLowerCase().includes(searchQuery),
+      )
+    );
+  });
+
+  const sortedPosts = searchedPosts?.slice().sort((a, b) => {
     const diff =
       new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
     return sortOrder === "newest" ? diff : -diff;
@@ -71,23 +97,48 @@ export function Home() {
   return (
     <section className="home__content">
       {isMobile ? (
-        <div className="home__content__controls">
-          <FilterDropdown
-            options={categoriesFilterOptions}
-            selected={selectedCategories}
-            onChange={(ids) =>
-              updateParams({ categories: ids.join(",") || null })
-            }
-            label="Category"
-          />
-          <FilterDropdown
-            options={authorsFilterOptions}
-            selected={selectedAuthors}
-            onChange={(ids) => updateParams({ authors: ids.join(",") || null })}
-            label="Author"
-          />
-          <SortButton sortOrder={sortOrder} onToggle={toggleSort} />
-        </div>
+        <>
+          <div className="home__content__controls">
+            <FilterDropdown
+              options={categoriesFilterOptions}
+              selected={selectedCategories}
+              onChange={(ids) =>
+                updateParams({ categories: ids.join(",") || null })
+              }
+              label="Category"
+            />
+            <FilterDropdown
+              options={authorsFilterOptions}
+              selected={selectedAuthors}
+              onChange={(ids) =>
+                updateParams({ authors: ids.join(",") || null })
+              }
+              label="Author"
+            />
+            <SortButton sortOrder={sortOrder} onToggle={toggleSort} />
+          </div>
+
+          <div className="home__content__selected-filters">
+            {selectedCategoriesLabels &&
+              selectedCategoriesLabels.length > 0 && (
+                <SecondaryButton
+                  aria-label={`Clear category filters: ${selectedCategoriesLabels.join(", ")}`}
+                  label={selectedCategoriesLabels.join(", ")}
+                  icon={clearIcon}
+                  onClick={() => updateParams({ categories: null })}
+                />
+              )}
+
+            {selectedAuthorsLabels && selectedAuthorsLabels.length > 0 && (
+              <SecondaryButton
+                aria-label={`Clear author filters: ${selectedAuthorsLabels.join(", ")}`}
+                label={selectedAuthorsLabels.join(", ")}
+                icon={clearIcon}
+                onClick={() => updateParams({ authors: null })}
+              />
+            )}
+          </div>
+        </>
       ) : (
         <div className="home__content__title-and-sort">
           <h1>DWS blog</h1>
