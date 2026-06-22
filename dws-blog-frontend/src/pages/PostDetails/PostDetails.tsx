@@ -1,8 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { BackButton } from "@/components";
-import { usePost } from "@/hooks/usePost";
+import { usePost } from "@/hooks";
 import { MetaInfo } from "./MetaInfo";
-import { LastArticles } from "./LastArticles/LastArticles";
+import { LastArticles } from "./LastArticles";
 import "./PostDetails.scss";
 
 export function PostDetails() {

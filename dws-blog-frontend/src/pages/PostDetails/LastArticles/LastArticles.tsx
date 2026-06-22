@@ -1,5 +1,5 @@
-import { usePosts } from "@/hooks/usePosts";
-import { Posts } from "@/components/Posts";
+import { Posts } from "@/components";
+import { usePosts } from "@/hooks";
 import "./LastArticles.scss";
 
 export function LastArticles() {

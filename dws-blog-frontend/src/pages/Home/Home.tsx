@@ -7,10 +7,7 @@ import {
   SecondaryButton,
   SortButton,
 } from "@/components";
-import { useIsMobile } from "@/hooks/useIsMobile";
-import { usePosts } from "@/hooks/usePosts";
-import { useCategories } from "@/hooks/useCategories";
-import { useAuthors } from "@/hooks/useAuthors";
+import { useAuthors, useCategories, useIsMobile, usePosts } from "@/hooks";
 import "./Home.scss";
 
 export function Home() {

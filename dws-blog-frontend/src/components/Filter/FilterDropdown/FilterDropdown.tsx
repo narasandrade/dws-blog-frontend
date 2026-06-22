@@ -1,8 +1,8 @@
 import { useRef, useState } from "react";
-import type { FilterOption } from "@/types/filterOption";
-import { useClickOutside } from "@/hooks/useClickOutside";
-import { SecondaryButton } from "@/components";
 import arrowExpandIcon from "@/assets/arrow-expand-secondary-medium.png";
+import { SecondaryButton } from "@/components";
+import { useClickOutside } from "@/hooks";
+import type { FilterOption } from "@/types/filterOption";
 import "./FilterDropdown.scss";
 
 type Props = {
