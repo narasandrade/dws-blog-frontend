@@ -32,7 +32,7 @@ http://localhost:5173
 ## Architecture decisions
 
 - Vite chosen for fast dev environment
-- Component-driven architecture
-- Create base components to avoid repeating code and customize on top of them when needed
+- Component-driven architecture, base (reusable) components
 - Services layer to isolate API logic
-- Rely on CSS media queries and useIsMobile hook to change UI to Mobile and Desktop views. Having separate layouts would cause a lot of re-renders and duplicated code
+- Rely on CSS media queries and custom hook to change UI to Mobile and Desktop views
+- Custom hooks for cleaner code, reusability and isolate logic from UI
