@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import dentsuLogo from "@/assets/dentsu-world-services.png";
-import xIcon from "@/assets/x-secondary-medium.png";
-import { SearchButton } from "@/components/Buttons";
-import { SearchInput } from "@/components/SearchInput";
-import { useDebounce } from "@/hooks/useDebounce";
-import { useIsMobile } from "@/hooks/useIsMobile";
+import { SearchButton, SearchInput } from "@/components";
+import { useDebounce, useIsMobile } from "@/hooks";
 import "./TopBar.scss";
 
 export function TopBar() {
@@ -46,13 +43,6 @@ export function TopBar() {
           onClear={handleClear}
           autoFocus
         />
-        <button
-          className="top-bar__close"
-          onClick={handleClear}
-          aria-label="Close search"
-        >
-          <img src={xIcon} alt="" aria-hidden="true" />
-        </button>
       </header>
     );
   }

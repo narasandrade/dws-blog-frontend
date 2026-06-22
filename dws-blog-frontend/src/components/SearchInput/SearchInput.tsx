@@ -1,5 +1,5 @@
 import xIcon from "@/assets/x-secondary-medium.png";
-import { SearchButton } from "@/components/Buttons";
+import { SearchButton } from "@/components";
 import "./SearchInput.scss";
 
 type Props = {
@@ -13,7 +13,7 @@ export function SearchInput({ value, onChange, onClear, autoFocus }: Props) {
   return (
     <div className="search-container">
       <input
-        type="search"
+        type="text"
         placeholder="Search"
         value={value}
         onChange={(e) => onChange(e.target.value)}
