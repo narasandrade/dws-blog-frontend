@@ -2,6 +2,8 @@
 
 This project was built as part of a technical assessment.
 
+View blog posts, apply filter, search, sort and view post details.
+
 ## Tech Stack
 - React
 - TypeScript
