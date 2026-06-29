@@ -1,10 +1,13 @@
 # DWS Blog Frontend
 
-This project was built as part of a technical assessment.
+A blog interface where you can browse posts, then filter, search, and sort them, and open any post to read its full details. Built as part of a technical assessment.
+
+![DWS Blog demo: filtering posts by category and author, and browsing the post card grid](docs/demo.gif)
 
 View blog posts, apply filter, search, sort and view post details.
 
 ## Tech Stack
+
 - React
 - TypeScript
 - TanStack React Query
@@ -33,8 +36,8 @@ http://localhost:5173
 
 ## Architecture decisions
 
-- Vite chosen for fast dev environment
-- Component-driven architecture, base (reusable) components
-- Services layer to isolate API logic
-- Rely on CSS media queries and custom hook to change UI to Mobile and Desktop views
-- Custom hooks for cleaner code, reusability and isolate logic from UI
+- Vite for a fast dev environment
+- Component-driven architecture with reusable base components
+- A services layer to isolate API logic
+- CSS media queries plus a custom hook to switch between mobile and desktop views
+- Custom hooks to keep components clean, share logic, and separate it from the UI
